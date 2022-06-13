@@ -1,0 +1,7 @@
+{
+    "pretty-name": "Dosa",
+    "ingredients": {
+        "mandatory": ["batter"],
+        "optional": []
+    }
+}

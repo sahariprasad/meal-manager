@@ -1,0 +1,7 @@
+{
+    "pretty-name": "Cereal - Chocos",
+    "ingredients": {
+        "mandatory": ["chocos"],
+        "optional": []
+    }
+}

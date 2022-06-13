@@ -1,0 +1,7 @@
+{
+    "pretty-name": "Cereal - Corn Flakes",
+    "ingredients": {
+        "mandatory": ["corn flakes"],
+        "optional": []
+    }
+}

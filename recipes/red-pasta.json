@@ -1,0 +1,7 @@
+{
+    "pretty-name": "Red Sauce Pasta",
+    "ingredients": {
+        "mandatory": ["onion", "pasta", "tomato puree", "garlic", "pasta seasoning"],
+        "optional": ["tomato"]
+    }
+}
