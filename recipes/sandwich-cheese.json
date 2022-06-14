@@ -3,5 +3,6 @@
     "ingredients": {
         "mandatory": ["bread", "cheese"],
         "optional": ["capsicum"]
-    }
+    },
+    "meal-time": ["breakfast"]
 }

@@ -1,0 +1,8 @@
+{
+    "pretty-name": "Sambar",
+    "ingredients":{
+        "mandatory": ["toor dal", "onion", "tomato", "sambar powder"],
+        "optional": []
+    },
+    "meal-time": ["breakfast", "lunch", "dinner"]
+}
