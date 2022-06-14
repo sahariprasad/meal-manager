@@ -31,10 +31,10 @@ def find_food(item_list_string=None):
         if set(recipe_dict[item]["ingredients"]["mandatory"]).issubset(available_items):
             possible_dishes.append(recipe_dict[item]["pretty-name"])
 
-    return_dict = {"foods": possible_dishes}
-    # print(possible_dishes)
-    return str(return_dict)
+    food_dict = {"foods": possible_dishes}
+    food_dict_str = str(food_dict).replace("'", '"')
+    return food_dict_str
 
 
 if __name__ == '__main__':
-    app.run(host='192.168.0.124')
+    app.run(host='0.0.0.0', port = 1234)
