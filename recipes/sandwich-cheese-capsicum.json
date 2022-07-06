@@ -1,5 +1,5 @@
 {
-    "pretty-name": "Sandwich - Cheese and Capsicum",
+    "pretty-name": "Cheese and Capsicum Sandwich",
     "ingredients": {
         "mandatory": ["bread", "cheese", "capsicum"],
         "optional": []
