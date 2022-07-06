@@ -9,11 +9,10 @@ def hello_world():
 
 @app.route('/find_food/<item_list_string>')
 def find_food(item_list_string=None):
+    # get available items list
     item_list_string = item_list_string.replace('\n',',').lower()
     print(item_list_string)
     available_items = item_list_string.split(',')
-    # get available items list
-    # available_items = ["bread", "cheese", "chocos", "semiya", "onion", "chilli"]
 
     # read all recipes
     recipe_path = "recipes"
@@ -32,9 +31,10 @@ def find_food(item_list_string=None):
         if set(recipe_dict[item]["ingredients"]["mandatory"]).issubset(available_items):
             possible_dishes.append(recipe_dict[item]["pretty-name"])
 
-    # print(possible_dishes)
-    return str(possible_dishes)
+    food_dict = {"foods": possible_dishes}
+    food_dict_str = str(food_dict).replace("'", '"')
+    return food_dict_str
 
 
 if __name__ == '__main__':
-    app.run(host='192.168.0.106')
+    app.run(host='0.0.0.0', port = 1234)

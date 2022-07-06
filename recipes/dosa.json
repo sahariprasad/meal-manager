@@ -3,5 +3,6 @@
     "ingredients": {
         "mandatory": ["batter"],
         "optional": []
-    }
+    },
+    "meal-time": ["breakfast", "dinner"]
 }

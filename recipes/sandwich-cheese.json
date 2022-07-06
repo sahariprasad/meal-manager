@@ -1,7 +1,8 @@
 {
-    "pretty-name": "Sandwich",
+    "pretty-name": "Sandwich - Cheese",
     "ingredients": {
         "mandatory": ["bread", "cheese"],
         "optional": ["capsicum"]
-    }
+    },
+    "meal-time": ["breakfast"]
 }

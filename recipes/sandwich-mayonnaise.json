@@ -1,0 +1,8 @@
+{
+    "pretty-name": "Sandwich - Mayonnaise",
+    "ingredients": {
+        "mandatory": ["bread", "mayonnaise"],
+        "optional": ["capsicum"]
+    },
+    "meal-time": ["breakfast"]
+}

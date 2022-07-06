@@ -1,0 +1,8 @@
+{
+    "pretty-name": "Arisi Paruppu Saadham",
+    "ingredients": {
+        "mandatory": ["rice", "toor dal", "onion", "tomato", "garlic", "sambar powder", "turmeric powder", "chilli"],
+        "optional": []
+    },
+    "meal-time": ["lunch"]
+}
