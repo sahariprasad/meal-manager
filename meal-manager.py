@@ -4,10 +4,15 @@ from flask import Flask, redirect, url_for, request, render_template
 app = Flask(__name__)
 @app.route('/')
 def hello_world():
-    return 'Hey there!'
+    return 'Hey there! Go to /fatboy to find food!'
 
 
-@app.route('/find_food/<item_list_string>')
+@app.route('/fatboy')
+def fatboy():
+    return 'Eat well and get fat.'
+
+
+@app.route('/fatboy/find_food/<item_list_string>')
 def find_food(item_list_string=None):
     # get available items list
     item_list_string = item_list_string.replace('\n',',').lower()
@@ -36,7 +41,7 @@ def find_food(item_list_string=None):
     return food_dict_str
 
 
-@app.route('/get_all_ingredients')
+@app.route('/fatboy/get_all_ingredients')
 def get_all_ingredients():
     # read all recipes
     recipe_path = "recipes"
