@@ -1,0 +1,8 @@
+{
+    "pretty-name": "Lady's Finger Fry",
+    "ingredients": {
+        "mandatory": ["lady's finger"],
+        "optional": []
+    },
+    "meal-time": ["lunch"]
+}
