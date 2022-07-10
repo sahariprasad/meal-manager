@@ -1,0 +1,8 @@
+{
+    "pretty-name": "Chilli Parotta",
+    "ingredients": {
+        "mandatory": ["parotta", "tomato", "onion", "ginger garlic paste", "garam masala", "chilli powder", "cloves", "cardamom"],
+        "optional": []
+    },
+    "meal-time": ["dinner"]
+}
