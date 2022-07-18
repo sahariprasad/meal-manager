@@ -2,7 +2,7 @@
     "pretty-name": "Coconut Curry Spaghetti",
     "ingredients": {
         "mandatory": ["coconut", "spaghetti", "onion", "tomato", "garlic", "turmeric powder", "curry powder"],
-        "optional": []
+        "optional": ["oregano"]
     },
     "meal-time": ["dinner"]
 }
