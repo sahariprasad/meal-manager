@@ -3,7 +3,9 @@ version: "3"
 services:
   fatboy:
     build: .
-    command: python3 meal-manager.py
+    volumes:
+      - .:/usr/src/app/meal-manager
+    command: python3 meal-manager/meal-manager.py
     environment:
       - discovery.type=single-node
     ports:
