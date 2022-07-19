@@ -1,7 +1,7 @@
 {
     "pretty-name": "Sandwich - Jam",
     "ingredients": {
-        "mandatory": ["jam", "sandwich"],
+        "mandatory": ["jam", "bread"],
         "optional": []
     },
     "meal-time": ["breakfast"]
