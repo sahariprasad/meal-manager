@@ -1,0 +1,8 @@
+{
+    "pretty-name": "Pongal",
+    "ingredients": {
+        "mandatory": ["pongal rice", "seeragam", "black pepper", "moong dal"],
+        "optional": []
+    },
+    "meal-time": ["dinner"]
+}
