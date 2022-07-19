@@ -20,7 +20,7 @@ def find_food(item_list_string=None):
     available_items = item_list_string.split(',')
 
     # read all recipes
-    recipe_path = "recipes"
+    recipe_path = "meal-manager/recipes"
     recipe_files = [pos_json for pos_json in os.listdir(recipe_path) if pos_json.endswith('.json')]
 
     recipe_dict = {}
@@ -44,7 +44,8 @@ def find_food(item_list_string=None):
 @app.route('/fatboy/get_all_ingredients')
 def get_all_ingredients():
     # read all recipes
-    recipe_path = "recipes"
+    recipe_path = "meal-manager/recipes"
+    print(os.listdir(recipe_path))
     recipe_files = [pos_json for pos_json in os.listdir(recipe_path) if pos_json.endswith('.json')]
 
     recipe_dict = {}
