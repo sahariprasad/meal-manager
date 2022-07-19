@@ -1,0 +1,8 @@
+{
+    "pretty-name": "Gojju",
+    "ingredients": {
+        "mandatory": ["kadala maavu", "kadala paruppu", "onion", "tomato", "chilli"],
+        "optional": []
+    },
+    "meal-time": ["dinner"]
+}
