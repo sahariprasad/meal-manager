@@ -1,0 +1,8 @@
+services:
+  fatboy:
+    build: .
+    command: python3 meal-manager.py
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 5000:1234
