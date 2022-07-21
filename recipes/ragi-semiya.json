@@ -1,0 +1,8 @@
+{
+    "pretty-name": "Ragi Semiya",
+    "ingredients": {
+        "mandatory": ["ragi semiya", "onion", "chilli"],
+        "optional": ["mustard", "kadala paruppu"]
+    },
+    "meal-time": ["breakfast", "dinner"]
+}

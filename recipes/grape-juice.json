@@ -1,0 +1,8 @@
+{
+    "pretty-name": "Grape Juice",
+    "ingredients": {
+        "mandatory": ["grapes", "sugar"],
+        "optional": []
+    },
+    "meal-time": ["juice", "breakfast"]
+}

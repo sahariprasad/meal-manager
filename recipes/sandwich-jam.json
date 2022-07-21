@@ -1,7 +1,7 @@
 {
-    "pretty-name": "Corn flakes",
+    "pretty-name": "Jam Sandwich",
     "ingredients": {
-        "mandatory": ["corn flakes"],
+        "mandatory": ["jam", "bread"],
         "optional": []
     },
     "meal-time": ["breakfast"]

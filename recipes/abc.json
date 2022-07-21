@@ -1,7 +1,7 @@
 {
-    "pretty-name": "Corn flakes",
+    "pretty-name": "ABC",
     "ingredients": {
-        "mandatory": ["corn flakes"],
+        "mandatory": ["apple", "beetroot", "carrot"],
         "optional": []
     },
     "meal-time": ["breakfast"]
