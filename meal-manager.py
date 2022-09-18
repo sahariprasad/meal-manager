@@ -26,8 +26,12 @@ def add_one_recipe():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         recipe_dict = request.json
-        insert_1 = food_collection.insert_one(recipe_dict)
-        return "{} added".format(recipe_dict["name"])
+        try:
+            insert_1 = food_collection.insert_one(recipe_dict)
+        except pymongo.errors.DuplicateKeyError:
+            return "Duplicate Key, _id:{} already exists. Try another _id.".format(recipe_dict["_id"])
+        return "{} added".format(recipe_dict["_id"])
+        # return "{} added".format(recipe_dict["name"])
     else:
         return 'Content-Type not supported!'
 
@@ -38,7 +42,16 @@ def add_many_recipes():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         recipe_dict = request.json
-        insert_many = food_collection.insert_many(recipe_dict)
+        try:
+            insert_many = food_collection.insert_many(recipe_dict, ordered=False)
+        except pymongo.errors.BulkWriteError as exception:
+            write_error_count = len(exception.details["writeErrors"])
+            write_error_list = []
+            for item in exception.details["writeErrors"]:
+                if item["code"] == 11000:
+                    write_error_list.append("Duplicate Key, _id:{} already exists. Try another _id.".format(item["keyValue"]["_id"]))
+            error_dict = {"write_error_count": write_error_count,"write_errors": write_error_list}
+            return error_dict
         return "Many recipes added"
     else:
         return 'Content-Type not supported!'
