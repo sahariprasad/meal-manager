@@ -1,12 +1,33 @@
 version: "3"
 
 services:
+  fatboy_mongo:
+    image: mongo
+    container_name: fatboy_mongo
+    environment:
+      - discovery.type=single-node
+    networks:
+      fatboy_net:
+        ipv4_address: 172.20.0.2
+    ports:
+      - 3001:27017
   fatboy:
     build: .
     volumes:
       - .:/usr/src/app/meal-manager
     command: python3 meal-manager/meal-manager.py
-    environment:
-      - discovery.type=single-node
+    depends_on:
+      - fatboy_mongo
+    networks:
+      fatboy_net:
+        ipv4_address: 172.20.0.3
     ports:
       - 5000:1234
+      
+networks:
+  fatboy_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1
