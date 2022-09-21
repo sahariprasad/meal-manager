@@ -3,7 +3,7 @@ from flask import Flask, redirect, url_for, request, render_template
 import pymongo
 
 # Connect to mongoDB
-mongo_client = pymongo.MongoClient("mongodb://localhost:27017/")
+mongo_client = pymongo.MongoClient("mongodb://172.20.0.2:27017/")
 fatboy_db = mongo_client["fatboy"]
 food_collection = fatboy_db["food"]
 
