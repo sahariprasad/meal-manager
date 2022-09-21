@@ -77,6 +77,20 @@ def get_all_recipes():
     recipe_list = list(food_collection.find())
     return(str(recipe_list))
 
+
+# Route for getting list of all ingredients (returns pretty names)
+@app.route('/fatboy/get_all_ingredients', methods=["GET"])
+def get_all_ingredients():
+    all_recipes = list(food_collection.find())
+    ingredients_list_full = []
+    for item in all_recipes:
+        ingredients_list_full.extend(item["mandatory_ingredients"])
+    ingredients_list_full = set(ingredients_list_full)
+    ingredients_list_full = [ingredient.capitalize() for ingredient in ingredients_list_full]
+    ingredients_list_full.sort()
+
+    return {"all_ingredients": ingredients_list_full}
+
 # def find_food(item_list_string=None):
 #     # get available items list
 #     item_list_string = item_list_string.replace('\n',',').lower()
