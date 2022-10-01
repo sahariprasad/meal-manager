@@ -1,0 +1,41 @@
+<html>
+    <header>
+        <title>
+            Meal Manager - Add Recipe
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}">
+    </header>
+    <body class="custom-font">
+        <h1>
+            Meal Manager
+        </h1>
+        <h2>
+            Add new recipe
+        </h2>
+        <form action="http://127.0.0.1:9000/meal_manager/add_recipe" method="POST">
+            <label for="pretty_name"><b>Name</b></label><br>
+            <input type="text" id="pretty_name" name="pretty_name"><br><br>
+
+            <label for="mandatory_ingredients"><b>Mandatory ingredients</b></label><br>
+            <input type="text" id="mandatory_ingredients" name="mandatory_ingredients"><br><br>
+
+            <label for="optional_ingredients"><b>Optional Ingredients</b></label><br>
+            <input type="text" id="optional_ingredients" name="optional_ingredients"><br><br>
+
+            <label for="meal_time"><b>Meal Time</b></label><br>
+            
+            <input type="checkbox" id="breakfast" name="meal_time" value="breakfast">
+            <label for="breakfast">Breakfast</label><br>
+            
+            <input type="checkbox" id="meal_time" name="meal_time" value="lunch">
+            <label for="lunch">Lunch</label><br>
+            
+            <input type="checkbox" id="meal_time" name="meal_time" value="dinner">
+            <label for="dinner">Dinner</label><br>
+            <br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+
+</html>
