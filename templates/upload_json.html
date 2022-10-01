@@ -1,0 +1,20 @@
+<html>
+    <header>
+        <title>
+            Meal Manager - Upload JSON
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}">
+    </header>
+    <body class="custom-font">
+        <h1>
+            Meal Manager
+        </h1>
+        <h2>
+            Upload JSON
+        </h2>
+        <form action="http://127.0.0.1:9000/meal_manager/upload_json" method="POST" enctype = "multipart/form-data" class="form-zero-margin">
+            <input type="file" id="recipes_json" name="file">
+            <input type="submit" value="Upload">
+        </form>
+    </body>
+</html>
