@@ -22,6 +22,21 @@ class Recipe:
         return recipe_dict
 
 
+class Ingredient:
+    def __init__(self, name):
+        self.name = name
+        self.pretty_name = name.capitalize()
+
+
+def get_all_ingredients():
+    filter = {}
+    projection = {"mandatory_ingredients":1}
+    all_mandatory_ingredients = list(food_collection.find(filter = filter, projection = projection))
+    flat_list = list(set([element for innerList in [item["mandatory_ingredients"] for item in all_mandatory_ingredients] for element in innerList]))
+    flat_list.sort()
+    final_ingredient_list = [Ingredient(item) for item in flat_list]
+    return final_ingredient_list
+
 app = Flask(__name__)
 
 @app.route('/')
