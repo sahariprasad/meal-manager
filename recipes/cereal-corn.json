@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Corn flakes",
-    "ingredients": {
-        "mandatory": ["corn flakes"],
-        "optional": []
-    },
-    "meal-time": ["breakfast"]
-}

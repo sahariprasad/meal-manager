@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Jam Sandwich",
-    "ingredients": {
-        "mandatory": ["jam", "bread"],
-        "optional": []
-    },
-    "meal-time": ["breakfast"]
-}

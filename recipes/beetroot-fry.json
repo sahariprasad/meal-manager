@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Beetroot Fry",
-    "ingredients": {
-        "mandatory": ["beetroot"],
-        "optional": []
-    },
-    "meal-time": ["lunch"]
-}

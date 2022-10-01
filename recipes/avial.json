@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Avial",
-    "ingredients": {
-        "mandatory": ["carrot", "beans", "potato", "coconut"],
-        "optional": []
-    },
-    "meal-time": ["lunch"]
-}

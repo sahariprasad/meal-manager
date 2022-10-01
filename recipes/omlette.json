@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Omlette - Plain",
-    "ingredients": {
-        "mandatory": ["egg"],
-        "optional": []
-    },
-    "meal-time": ["breakfast", "lunch", "dinner"]
-}

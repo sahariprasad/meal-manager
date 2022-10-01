@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Coconut Chutney",
-    "ingredients":{
-        "mandatory": ["coconut", "pottu kadala", "chilli"],
-        "optional": []
-    },
-    "meal-time": ["breakfast", "dinner"]
-}
