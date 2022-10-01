@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Carrot Beans Fry",
-    "ingredients": {
-        "mandatory": ["carrot", "beans"],
-        "optional": []
-    },
-    "meal-time": ["lunch"]
-}

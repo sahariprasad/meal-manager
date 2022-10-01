@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Semiya",
-    "ingredients": {
-        "mandatory": ["semiya", "onion", "chilli"],
-        "optional": ["maggi masala", "mustard", "kadala paruppu"]
-    },
-    "meal-time": ["breakfast", "dinner"]
-}

@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Top ramen",
-    "ingredients": {
-        "mandatory": ["top ramen"],
-        "optional": ["tomato", "onion"]
-    },
-    "meal-time": ["dinner"]
-}

@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Potato Fry",
-    "ingredients": {
-        "mandatory": ["potato", "chilli powder"],
-        "optional": []
-    },
-    "meal-time": ["breakfast", "dinner"]
-}

@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Popcorn",
-    "ingredients": {
-        "mandatory": ["popcorn"],
-        "optional": []
-    },
-    "meal-time": ["snack"]
-}

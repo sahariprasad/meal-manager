@@ -1,8 +1,0 @@
-{
-    "pretty-name": "Chocos",
-    "ingredients": {
-        "mandatory": ["chocos"],
-        "optional": []
-    },
-    "meal-time": ["breakfast"]
-}
