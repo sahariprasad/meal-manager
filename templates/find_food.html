@@ -1,17 +1,11 @@
-<html>
-    <header>
-        <title>
-            Meal Manager - Find Food
-        </title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}">
-    </header>
-    <body class="custom-font">
-        <h1>Meal Manager</h1>
-        <h2>Find food</h2>
-        <form action="http://127.0.0.1:9000/meal_manager/find_food" method="POST">
-            <label for="available_ingredients">Enter comma separated list of available ingredients</label>
-            <input type="text" id="available_ingredients" name = "available_ingredients"><br>
-            <input type="submit" value="Submit">
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block title %}Meal Manager{% endblock %}
+
+{% block content %}
+    <h2>Find food</h2>
+    <form action="http://127.0.0.1:9000/meal_manager/find_food" method="POST">
+        <label for="available_ingredients">Enter comma separated list of available ingredients</label>
+        <input type="text" id="available_ingredients" name = "available_ingredients"><br>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

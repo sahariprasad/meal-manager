@@ -43,11 +43,8 @@ app = Flask(__name__)
 app.secret_key = "testing"
 @app.route('/', methods=["POST", "GET"])
 def index():
-    # return 'Hey there! Go to /fatboy to find food!'
-    # def index():
     message = ''
     if "email" in session:
-        # return redirect(url_for("logged_in"))
         return render_template("meal_manager.html", email=session["email"])
     if request.method == "POST":
         user = request.form.get("fullname")
@@ -74,8 +71,10 @@ def index():
             
             user_data = records.find_one({"email": email})
             new_email = user_data['email']
-   
-            return render_template('logged_in.html', email=new_email)
+
+            session["email"] = new_email
+            return render_template("meal_manager.html", email=session["email"])
+            return 
     return render_template('index.html')
 
 
@@ -91,7 +90,7 @@ def logged_in():
 def login():
     message = 'Please login to your account'
     if "email" in session:
-        return redirect(url_for("logged_in"))
+        return render_template("meal_manager.html", email=session["email"])
 
     if request.method == "POST":
         email = request.form.get("email")
@@ -105,7 +104,7 @@ def login():
             
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
-                return redirect(url_for('logged_in'))
+                return render_template("meal_manager.html", email=session["email"])
             else:
                 if "email" in session:
                     return redirect(url_for("logged_in"))
@@ -139,7 +138,6 @@ def add_recipe():
             [item.strip() for item in request.form.getlist("meal_time")]
         )
         food_collection.insert_one(new_recipe.get_document())
-        # return redirect(url_for("meal_manager"))
         return render_template("upload_success.html")
     return render_template("add_recipe.html")
 
@@ -178,7 +176,6 @@ def upload_json():
         recipes_list = json.load(file_content)
         recipes_list_updated = [dict(recipe, user=session["email"]) for recipe in recipes_list]
         food_collection.insert_many(recipes_list_updated, ordered=False)
-        # return "{} recipes added".format(len(recipes_list))
         return render_template("upload_success.html")
     return render_template("upload_json.html")
 
