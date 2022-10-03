@@ -7,6 +7,7 @@
     </header>
     <body class="custom-font">
         <h1>Meal Manager</h1>
+        Logged in as {{ email }}<br><br>
         <b>Add recipe</b>  
         <a href="{{ url_for('add_recipe') }}">Manually</a> |   
         <a href="{{ url_for('upload_json') }}">Upload JSON</a><br><br>

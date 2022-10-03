@@ -1,0 +1,12 @@
+[
+    {
+        "pretty_name": "dosa",
+        "mandatory_ingredients": [
+          "batter"
+        ],
+        "optional_ingredients": [],
+        "meal_time": [
+          "breakfast", "dinner"
+        ]
+      }
+]

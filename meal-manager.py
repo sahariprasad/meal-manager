@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, flash, url_for, redirect
+from flask import Flask, render_template, request, flash, url_for, redirect, session
 from db_man import get_database
 import json
+import bcrypt
 
 db1 = get_database()
+records = db1.register
 food_collection = db1["food"]
 
 class Recipe:
@@ -38,15 +40,94 @@ def get_all_ingredients():
     return final_ingredient_list
 
 app = Flask(__name__)
+app.secret_key = "testing"
+@app.route('/', methods=["POST", "GET"])
+def index():
+    # return 'Hey there! Go to /fatboy to find food!'
+    # def index():
+    message = ''
+    if "email" in session:
+        # return redirect(url_for("logged_in"))
+        return render_template("meal_manager.html", email=session["email"])
+    if request.method == "POST":
+        user = request.form.get("fullname")
+        email = request.form.get("email")
+        
+        password1 = request.form.get("password1")
+        password2 = request.form.get("password2")
+        
+        user_found = records.find_one({"name": user})
+        email_found = records.find_one({"email": email})
+        if user_found:
+            message = 'There already is a user by that name'
+            return render_template('index.html', message=message)
+        if email_found:
+            message = 'This email already exists in database'
+            return render_template('index.html', message=message)
+        if password1 != password2:
+            message = 'Passwords should match!'
+            return render_template('index.html', message=message)
+        else:
+            hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
+            user_input = {'name': user, 'email': email, 'password': hashed}
+            records.insert_one(user_input)
+            
+            user_data = records.find_one({"email": email})
+            new_email = user_data['email']
+   
+            return render_template('logged_in.html', email=new_email)
+    return render_template('index.html')
 
-@app.route('/')
-def hello_world():
-    return 'Hey there! Go to /fatboy to find food!'
 
+@app.route('/logged_in')
+def logged_in():
+    if "email" in session:
+        email = session["email"]
+        return render_template('logged_in.html', email=email)
+    else:
+        return redirect(url_for("login"))
+
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    message = 'Please login to your account'
+    if "email" in session:
+        return redirect(url_for("logged_in"))
+
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+       
+        email_found = records.find_one({"email": email})
+        if email_found:
+            email_val = email_found['email']
+            passwordcheck = email_found['password']
+            
+            if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
+                session["email"] = email_val
+                return redirect(url_for('logged_in'))
+            else:
+                if "email" in session:
+                    return redirect(url_for("logged_in"))
+                message = 'Wrong password'
+                return render_template('login.html', message=message)
+        else:
+            message = 'Email not found'
+            return render_template('login.html', message=message)
+    return render_template('login.html', message=message)
+
+
+@app.route("/logout", methods=["POST", "GET"])
+def logout():
+    if "email" in session:
+        session.pop("email", None)
+        return render_template("signout.html")
+    else:
+        return render_template('index.html')
 
 @app.route('/meal_manager')
 def meal_manager():
-    return render_template("meal_manager.html")
+    return render_template("meal_manager.html", email = session["email"])
 
 @app.route('/meal_manager/add_recipe', methods = ["GET", "POST"])
 def add_recipe():
@@ -68,7 +149,8 @@ def find_food():
     if request.method == "POST":
         content_type = request.headers.get('Content-Type')
         possible_recipes = []
-        all_recipes = list(food_collection.find().sort('pretty_name'))
+        filter = {"user": session["email"]}
+        all_recipes = list(food_collection.find(filter=filter).sort('pretty_name'))
         print(request.data)
         if content_type == 'application/json':
             ingredient_list = request.json
@@ -94,7 +176,8 @@ def upload_json():
         file.save(file.filename)
         file_content = open(file.filename, "r", encoding="utf-8")
         recipes_list = json.load(file_content)
-        food_collection.insert_many(recipes_list, ordered=False)
+        recipes_list_updated = [dict(recipe, user=session["email"]) for recipe in recipes_list]
+        food_collection.insert_many(recipes_list_updated, ordered=False)
         # return "{} recipes added".format(len(recipes_list))
         return render_template("upload_success.html")
     return render_template("upload_json.html")

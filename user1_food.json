@@ -1,0 +1,14 @@
+[
+    {
+        "pretty_name": "ABC",
+        "mandatory_ingredients": [
+          "apple",
+          "beetroot",
+          "carrot"
+        ],
+        "optional_ingredients": [],
+        "meal_time": [
+          "breakfast"
+        ]
+      }
+]
