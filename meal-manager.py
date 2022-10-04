@@ -160,9 +160,11 @@ def find_food():
             if set(item["mandatory_ingredients"]).issubset(ingredient_list):
                 possible_recipes.append(item["pretty_name"])
         if len(possible_recipes) == 0:
-            return "You don't have anything to cook."
+            # return "You don't have anything to cook."
+            return render_template("available_recipes.html", recipe_list = ["Nothing is available"])
         else:
-            return str(possible_recipes)
+            # return str(possible_recipes)
+            return render_template("available_recipes.html", recipe_list = possible_recipes)
 
     return render_template("find_food.html")
 
