@@ -1,17 +1,9 @@
-<html>
-    <header>
-        <title>
-            Meal Manager - Recipes Added
-        </title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}">
-    </header>
-    <body class="custom-font">
-        <h1>
-            Meal Manager
-        </h1>
-        Recipes added successfully.<br>
-        <a href="{{ url_for('add_recipe') }}">Add another recipe</a><br>
-        <a href="{{ url_for('upload_json') }}">Upload JSON</a><br>
-        <a href="{{ url_for('meal_manager') }}">Go to home</a>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block title %}Meal Manager{% endblock %}
+
+{% block content %}
+    Recipes added successfully.<br>
+    <a href="{{ url_for('add_recipe') }}">Add another recipe</a><br>
+    <a href="{{ url_for('upload_json') }}">Upload JSON</a><br>
+    <a href="{{ url_for('meal_manager') }}">Go to home</a>
+{% endblock %}
