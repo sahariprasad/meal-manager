@@ -55,11 +55,11 @@ def index():
         
         user_found = records.find_one({"name": user})
         email_found = records.find_one({"email": email})
-        if user_found:
-            message = 'There already is a user by that name'
-            return render_template('index.html', message=message)
+        # if user_found:
+        #     message = 'There already is a user by that name'
+        #     return render_template('index.html', message=message)
         if email_found:
-            message = 'This email already exists in database'
+            message = 'This username already exists, please choose another one'
             return render_template('index.html', message=message)
         if password1 != password2:
             message = 'Passwords should match!'
@@ -88,7 +88,7 @@ def logged_in():
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
-    message = 'Please login to your account'
+    # message = 'Please login to your account'
     if "email" in session:
         return render_template("meal_manager.html", email=session["email"])
 
@@ -108,12 +108,12 @@ def login():
             else:
                 if "email" in session:
                     return redirect(url_for("logged_in"))
-                message = 'Wrong password'
+                message = 'Incorrect password'
                 return render_template('login.html', message=message)
         else:
-            message = 'Email not found'
+            message = 'User not found'
             return render_template('login.html', message=message)
-    return render_template('login.html', message=message)
+    return render_template('login.html')
 
 
 @app.route("/logout", methods=["POST", "GET"])

@@ -4,3 +4,71 @@
 .custom-font {
     font-family: 'Poppins', sans-serif;
 }
+
+.login-bg {
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/image4.jpg");
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+}
+
+.login-card {
+    width: 400px;
+    background: rgba(59, 58, 58, 0.7);
+    backdrop-filter: blur(10px);
+    /* float: right; */
+    /* width: 300px; */
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+}
+
+.login-title {
+    padding: 12px;
+    padding-bottom: 0px;
+    font-size: xx-large;
+    text-align: center;
+    color: white;
+}
+
+.login-title-small {
+    /* padding: 12px; */
+    /* padding-bottom: 0px; */
+    font-size: large;
+    text-align: center;
+    color: white;
+}
+
+.login-form {
+    padding: 24px;
+    color: white;
+}
+
+.login-already {
+    color: white;
+}
+
+.login-already:hover{
+    color: aquamarine;
+}
+
+.alert-secondary-custom {
+    background-color: rgba(219, 24, 24, 0.541);
+    text-align: center;
+    border: none;
+    border-radius: 0px;
+    
+}
+
+.alert-secondary-custom-text {
+    color: white;
+    margin: 0px !important;
+}
