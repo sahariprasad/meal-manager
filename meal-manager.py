@@ -120,7 +120,8 @@ def login():
 def logout():
     if "email" in session:
         session.pop("email", None)
-        return render_template("signout.html")
+        # return render_template("signout.html")
+        return render_template("login.html")
     else:
         return render_template('index.html')
 

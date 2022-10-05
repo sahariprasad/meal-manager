@@ -5,16 +5,26 @@
     font-family: 'Poppins', sans-serif;
 }
 
+@keyframes login-bg-fadein {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
+
 .login-bg {
     height: 100%;
     width: 100%;
-    background-image: url("../images/image4.jpg");
+    background-image: url("../images/image1.jpg");
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-size: cover;
+    
 }
 
 .login-card {
@@ -29,6 +39,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 8px;
+    animation: 0.25s ease-in 0s 1 login-bg-fadein;
 }
 
 .login-title {
