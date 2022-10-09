@@ -145,29 +145,33 @@ def add_recipe():
 
 @app.route('/meal_manager/find_food', methods = ["GET", "POST"])
 def find_food():
+    # result = False
     if request.method == "POST":
         content_type = request.headers.get('Content-Type')
         possible_recipes = []
         filter = {"user": session["email"]}
         all_recipes = list(food_collection.find(filter=filter).sort('pretty_name'))
-        print(request.data)
+        all_ingredients = get_all_ingredients()
         if content_type == 'application/json':
             ingredient_list = request.json
             ingredient_list = [ingredient.lower() for ingredient in ingredient_list]
         elif content_type == 'application/x-www-form-urlencoded':
             ingredient_list = [ingredient.strip() for ingredient in request.form["available_ingredients"].lower().split(',')]
 
+        # print(ingredient_list)
         for item in all_recipes:
             if set(item["mandatory_ingredients"]).issubset(ingredient_list):
-                possible_recipes.append(item["pretty_name"])
+                possible_recipes.append(item)
         if len(possible_recipes) == 0:
             # return "You don't have anything to cook."
-            return render_template("available_recipes.html", recipe_list = ["Nothing is available"])
+            # return render_template("available_recipes.html", recipe_list = ["Nothing is available"])
+            return render_template("find_food.html", recipe_list = ["Nothing is available"], all_ingredients = all_ingredients)
         else:
             # return str(possible_recipes)
-            return render_template("available_recipes.html", recipe_list = possible_recipes)
+            # return render_template("available_recipes.html", recipe_list = possible_recipes)
+            return render_template("find_food.html", recipe_list = possible_recipes, all_ingredients = all_ingredients)
 
-    return render_template("find_food.html")
+    return render_template("find_food.html", all_ingredients = all_ingredients)
 
 
 @app.route('/meal_manager/upload_json', methods = ["GET", "POST"])
