@@ -14,7 +14,6 @@ def beautify_list(list_to_convert):
             output_string += item.capitalize()
         else:
             output_string += item.capitalize() + ', '
-    print(output_string)
     return output_string
 
 class Recipe:
