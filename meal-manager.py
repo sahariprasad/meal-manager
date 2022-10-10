@@ -7,12 +7,24 @@ db1 = get_database()
 records = db1.register
 food_collection = db1["food"]
 
+def beautify_list(list_to_convert):
+    output_string = ""
+    for item in list_to_convert:
+        if item == list_to_convert[-1]:
+            output_string += item.capitalize()
+        else:
+            output_string += item.capitalize() + ', '
+    return output_string
+
 class Recipe:
     def __init__(self, pretty_name, mandatory_ingredients, optional_ingredients, meal_time):
         self.pretty_name = pretty_name
         self.mandatory_ingredients = mandatory_ingredients
+        self.mandatory_ingredients_pretty = beautify_list(mandatory_ingredients)
         self.optional_ingredients = optional_ingredients
+        self.optional_ingredients_pretty = beautify_list(optional_ingredients)
         self.meal_time = meal_time
+        self.meal_time_pretty = beautify_list(meal_time)
     
     def get_document(self):
         recipe_dict = {
@@ -120,7 +132,7 @@ def login():
 def logout():
     if "email" in session:
         session.pop("email", None)
-        return render_template("signout.html")
+        return render_template("login.html")
     else:
         return render_template('index.html')
 
@@ -144,29 +156,33 @@ def add_recipe():
 
 @app.route('/meal_manager/find_food', methods = ["GET", "POST"])
 def find_food():
+    all_ingredients = get_all_ingredients()
     if request.method == "POST":
         content_type = request.headers.get('Content-Type')
         possible_recipes = []
         filter = {"user": session["email"]}
         all_recipes = list(food_collection.find(filter=filter).sort('pretty_name'))
-        print(request.data)
+        
         if content_type == 'application/json':
             ingredient_list = request.json
             ingredient_list = [ingredient.lower() for ingredient in ingredient_list]
         elif content_type == 'application/x-www-form-urlencoded':
-            ingredient_list = [ingredient.strip() for ingredient in request.form["available_ingredients"].lower().split(',')]
+            # ingredient_list = [ingredient.strip() for ingredient in request.form["available_ingredients"].lower().split(',')]
+            ingredient_list = request.form.getlist("available_ingredients")
 
         for item in all_recipes:
             if set(item["mandatory_ingredients"]).issubset(ingredient_list):
-                possible_recipes.append(item["pretty_name"])
+                recipe_object = Recipe(item["pretty_name"], 
+                                        item["mandatory_ingredients"],
+                                        item["optional_ingredients"],
+                                        item["meal_time"])
+                possible_recipes.append(recipe_object)
         if len(possible_recipes) == 0:
-            # return "You don't have anything to cook."
-            return render_template("available_recipes.html", recipe_list = ["Nothing is available"])
+            return render_template("find_food.html", no_food_alert = True, all_ingredients = all_ingredients)
         else:
-            # return str(possible_recipes)
-            return render_template("available_recipes.html", recipe_list = possible_recipes)
+            return render_template("find_food.html", recipe_list = possible_recipes, all_ingredients = all_ingredients)
 
-    return render_template("find_food.html")
+    return render_template("find_food.html", all_ingredients = all_ingredients)
 
 
 @app.route('/meal_manager/upload_json', methods = ["GET", "POST"])
@@ -184,4 +200,3 @@ def upload_json():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port = 9000)
- 

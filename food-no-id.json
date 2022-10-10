@@ -1,0 +1,326 @@
+[{
+  "pretty_name": "ABC",
+  "mandatory_ingredients": [
+    "apple",
+    "beetroot",
+    "carrot"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "breakfast"
+  ]
+},{
+  "pretty_name": "Arisi Paruppu Saadham",
+  "mandatory_ingredients": [
+    "rice",
+    "toor dal",
+    "onion",
+    "tomato",
+    "garlic",
+    "sambar powder",
+    "turmeric powder",
+    "chilli"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "lunch"
+  ]
+},{
+  "pretty_name": "Avial",
+  "mandatory_ingredients": [
+    "carrot",
+    "beans",
+    "potato",
+    "coconut"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "lunch"
+  ]
+},{
+  "pretty_name": "Beetroot Fry",
+  "mandatory_ingredients": [
+    "beetroot"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "lunch"
+  ]
+},{
+  "pretty_name": "Carrot Beans Fry",
+  "mandatory_ingredients": [
+    "carrot",
+    "beans"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "lunch"
+  ]
+},{
+  "pretty_name": "Chocos",
+  "mandatory_ingredients": [
+    "chocos"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "breakfast"
+  ]
+},{
+  "pretty_name": "Corn flakes",
+  "mandatory_ingredients": [
+    "corn flakes"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "breakfast"
+  ]
+},{
+  "pretty_name": "Chilli Parotta",
+  "mandatory_ingredients": [
+    "parotta",
+    "tomato",
+    "onion",
+    "ginger garlic paste",
+    "garam masala",
+    "chilli powder",
+    "cloves",
+    "cardamom"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "dinner"
+  ]
+},{
+  "pretty_name": "Coconut Chutney",
+  "mandatory_ingredients": [
+    "coconut",
+    "pottu kadala",
+    "chilli"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "breakfast",
+    "dinner"
+  ]
+},{
+  "pretty_name": "Coconut Curry Spaghetti",
+  "mandatory_ingredients": [
+    "coconut",
+    "spaghetti",
+    "onion",
+    "tomato",
+    "garlic",
+    "turmeric powder",
+    "curry powder"
+  ],
+  "optional_ingredients": [
+    "oregano"
+  ],
+  "meal_time": [
+    "dinner"
+  ]
+},{
+  "pretty_name": "Dosa",
+  "mandatory_ingredients": [
+    "batter"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "breakfast",
+    "dinner"
+  ]
+},{
+  "pretty_name": "Gojju",
+  "mandatory_ingredients": [
+    "kadala maavu",
+    "kadala paruppu",
+    "onion",
+    "tomato",
+    "chilli"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "dinner"
+  ]
+},{
+  "pretty_name": "Grape Juice",
+  "mandatory_ingredients": [
+    "grapes",
+    "sugar"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "juice",
+    "breakfast"
+  ]
+},{
+  "pretty_name": "Lady's Finger Fry",
+  "mandatory_ingredients": [
+    "lady's finger"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "lunch"
+  ]
+},{
+  "pretty_name": "Omlette - Plain",
+  "mandatory_ingredients": [
+    "egg"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "breakfast",
+    "lunch",
+    "dinner"
+  ]
+},{
+  "pretty_name": "Pongal",
+  "mandatory_ingredients": [
+    "pongal rice",
+    "seeragam",
+    "black pepper",
+    "moong dal"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "dinner"
+  ]
+},{
+  "pretty_name": "Popcorn",
+  "mandatory_ingredients": [
+    "popcorn"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "snack"
+  ]
+},{
+  "pretty_name": "Potato Fry",
+  "mandatory_ingredients": [
+    "potato",
+    "chilli powder"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "breakfast",
+    "dinner"
+  ]
+},{
+  "pretty_name": "Ragi Semiya",
+  "mandatory_ingredients": [
+    "ragi semiya",
+    "onion",
+    "chilli"
+  ],
+  "optional_ingredients": [
+    "mustard",
+    "kadala paruppu"
+  ],
+  "meal_time": [
+    "breakfast",
+    "dinner"
+  ]
+},{
+  "pretty_name": "Top ramen",
+  "mandatory_ingredients": [
+    "top ramen"
+  ],
+  "optional_ingredients": [
+    "tomato",
+    "onion"
+  ],
+  "meal_time": [
+    "dinner"
+  ]
+},{
+  "pretty_name": "Red Sauce Pasta",
+  "mandatory_ingredients": [
+    "onion",
+    "pasta",
+    "tomato puree",
+    "garlic",
+    "pasta seasoning"
+  ],
+  "optional_ingredients": [
+    "tomato"
+  ],
+  "meal_time": [
+    "lunch",
+    "dinner"
+  ]
+},{
+  "pretty_name": "Sambar",
+  "mandatory_ingredients": [
+    "toor dal",
+    "onion",
+    "tomato",
+    "sambar powder"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "breakfast",
+    "lunch",
+    "dinner"
+  ]
+},{
+  "pretty_name": "Cheese and Capsicum Sandwich",
+  "mandatory_ingredients": [
+    "bread",
+    "cheese",
+    "capsicum"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "breakfast"
+  ]
+},{
+  "pretty_name": "Cheese Sandwich",
+  "mandatory_ingredients": [
+    "bread",
+    "cheese"
+  ],
+  "optional_ingredients": [
+    "capsicum"
+  ],
+  "meal_time": [
+    "breakfast"
+  ]
+},{
+  "pretty_name": "Jam Sandwich",
+  "mandatory_ingredients": [
+    "jam",
+    "bread"
+  ],
+  "optional_ingredients": [],
+  "meal_time": [
+    "breakfast"
+  ]
+},{
+  "pretty_name": "Mayo Sandwich",
+  "mandatory_ingredients": [
+    "bread",
+    "mayonnaise"
+  ],
+  "optional_ingredients": [
+    "capsicum"
+  ],
+  "meal_time": [
+    "breakfast"
+  ]
+},{
+  "pretty_name": "Semiya",
+  "mandatory_ingredients": [
+    "semiya",
+    "onion",
+    "chilli"
+  ],
+  "optional_ingredients": [
+    "maggi masala",
+    "mustard",
+    "kadala paruppu"
+  ],
+  "meal_time": [
+    "breakfast",
+    "dinner"
+  ]
+}]
