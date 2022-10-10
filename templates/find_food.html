@@ -6,9 +6,9 @@
     <form action="http://127.0.0.1:9000/meal_manager/find_food" method="POST">
         <!-- <label for="available_ingredients">Enter comma separated list of available ingredients</label>
         <input type="text" id="available_ingredients" name = "available_ingredients"><br> -->
-        <select class="selectpicker" multiple data-live-search="true">
+        <select class="selectpicker" multiple data-live-search="true" multiple data-actions-box="true" name = "available_ingredients">
             {% for item in all_ingredients %}
-            <option>{{ item.pretty_name }}</option>
+            <option value="{{ item.name }}">{{ item.pretty_name }}</option>
             {% endfor %}
         </select>
         <!-- <input type="submit" value="Submit"> -->
@@ -29,9 +29,9 @@
             {% for recipe in recipe_list %}
             <tr>
                 <td>{{ recipe.pretty_name }}</td>
-                <td>{{ recipe.mandatory_ingredients }}</td>
-                <td>{{ recipe.optional_ingredients }}</td>
-                <td>{{ recipe.meal_time }}</td>
+                <td>{{ recipe.mandatory_ingredients_pretty }}</td>
+                <td>{{ recipe.optional_ingredients_pretty }}</td>
+                <td>{{ recipe.meal_time_pretty }}</td>
             </tr>
             {% endfor %}
         </tbody>
