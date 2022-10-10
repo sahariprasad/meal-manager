@@ -86,18 +86,19 @@
 }
 
 .find-food-container {
+    margin-top: 48px;
     float: left;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
     flex-wrap: wrap;
     align-content: space-around;
 }
 
 .find-food-search {
-    position: relative;
+    position: absolute;
     /* top: 50%; */
     left: 50%;
     transform: translate(-50%, 0%);
@@ -105,13 +106,14 @@
 }
 
 .find-food-table {
-    width: 75%;
-    min-width: 400px;
-    justify-content: center;
-    margin-top: 48px;
+    /* width: 75%; */
+    /* min-width: 400px; */
+    justify-content: space-around;
+    align-items: center;
+    /* margin-top: 48px; */
     position: relative;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    /* left: 50%; */
+    /* transform: translate(-50%, 0%); */
 }
 
 .find-food-alert {
@@ -125,3 +127,40 @@
     text-align: center;
     font-weight: bold;
 }
+
+.find-food-card {
+    width: 280px;
+    height: 200px;
+    margin: 12px;
+    background-color: rgb(227, 241, 216);
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.find-food-card-title {
+    font-size: larger;
+    font-weight: bold;
+    /* height: 50px; */
+    padding-left: 12px;
+    padding-top: 12px;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.find-food-card-ingredients {
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-bottom: 0px;
+    padding-top: 12px;
+}
+
+.find-food-card-mealtime {
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-bottom: 0px;
+    padding-top: 12px;
+    color: cadetblue;
+}
+

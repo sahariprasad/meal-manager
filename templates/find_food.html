@@ -3,10 +3,10 @@
 
 {% block content %}
     <h2>Find food</h2>
-    <div class="find-food-container">
+    <div style="width: 100%;">
         <div class="find-food-search">
             <form action="http://127.0.0.1:9000/meal_manager/find_food" method="POST">
-                <select class="selectpicker" multiple data-live-search="true" multiple data-actions-box="true" name = "available_ingredients" data-width="400px">
+                <select class="selectpicker" multiple data-live-search="true" multiple data-actions-box="true" name = "available_ingredients" data-width="250px" data-selected-text-format="count > 3">
                     {% for item in all_ingredients %}
                     <option value="{{ item.name }}">{{ item.pretty_name }}</option>
                     {% endfor %}
@@ -14,14 +14,19 @@
                 <button type="submit" class="btn btn-primary">Find</button>
             </form>
         </div>
+    </div>
+    
+
+    <div class="find-food-container">
+        
         {% if recipe_list %}
-        <table class="table find-food-table">
+        <!-- <table class="table table-striped find-food-table">
             <thead>
                 <tr>
-                    <th scope="col">Dish</th>
-                    <th scope="col">Mandatory Ingredients</th>
-                    <th scope="col">Optional Ingredients</th>
-                    <th scope="col">Meal time</th>
+                    <th scope="col" style="width:25%">Dish</th>
+                    <th scope="col" style="width:25%">Mandatory Ingredients</th>
+                    <th scope="col" style="width:25%">Optional Ingredients</th>
+                    <th scope="col" style="width:25%">Meal time</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,7 +39,19 @@
                 </tr>
                 {% endfor %}
             </tbody>
-        </table>
+        </table> -->
+        {% for recipe in recipe_list %}
+        <div class="find-food-table">
+            <div class="find-food-card">
+                <div>
+                    <p class="find-food-card-title">{{ recipe.pretty_name }}</p>
+                    <p class="find-food-card-mealtime">{{ recipe.meal_time_pretty }}</p>
+                    <p class="find-food-card-ingredients">{{ recipe.mandatory_ingredients_pretty }}</p>
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
         {% endif %}
 
         {% if no_food_alert %}
