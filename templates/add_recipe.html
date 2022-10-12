@@ -1,32 +1,44 @@
 {% extends "base.html" %}
-{% block title %}Meal Manager{% endblock %}
-
+{% block title %}Meal Manager | Add Recipe{% endblock %}
+{% block nav_title %}Meal Manager | Add Recipe{% endblock%}
 {% block content %}
-    <h2>
-        Add new recipe
-    </h2>
-    <form action="http://127.0.0.1:9000/meal_manager/add_recipe" method="POST">
-        <label for="pretty_name"><b>Name</b></label><br>
-        <input type="text" id="pretty_name" name="pretty_name"><br><br>
-
-        <label for="mandatory_ingredients"><b>Mandatory ingredients</b></label><br>
-        <input type="text" id="mandatory_ingredients" name="mandatory_ingredients"><br><br>
-
-        <label for="optional_ingredients"><b>Optional Ingredients</b></label><br>
-        <input type="text" id="optional_ingredients" name="optional_ingredients"><br><br>
-
-        <label for="meal_time"><b>Meal Time</b></label><br>
+<div>
+    <div class="add-food-container">
+        <div class="add-food-manually">
+            <b>Add recipe manually</b>
+            <form action="http://127.0.0.1:9000/meal_manager/add_recipe" method="POST">
+                <label for="pretty_name"><b>Name</b></label><br>
+                <input type="text" id="pretty_name" name="pretty_name"><br><br>
         
-        <input type="checkbox" id="breakfast" name="meal_time" value="breakfast">
-        <label for="breakfast">Breakfast</label><br>
+                <label for="mandatory_ingredients"><b>Mandatory ingredients</b></label><br>
+                <input type="text" id="mandatory_ingredients" name="mandatory_ingredients"><br><br>
         
-        <input type="checkbox" id="meal_time" name="meal_time" value="lunch">
-        <label for="lunch">Lunch</label><br>
+                <label for="optional_ingredients"><b>Optional Ingredients</b></label><br>
+                <input type="text" id="optional_ingredients" name="optional_ingredients"><br><br>
         
-        <input type="checkbox" id="meal_time" name="meal_time" value="dinner">
-        <label for="dinner">Dinner</label><br>
-        <br>
-
-        <input type="submit" value="Submit">
-    </form>
+                <label for="meal_time"><b>Meal Time</b></label><br>
+                
+                <input type="checkbox" id="breakfast" name="meal_time" value="breakfast">
+                <label for="breakfast">Breakfast</label><br>
+                
+                <input type="checkbox" id="meal_time" name="meal_time" value="lunch">
+                <label for="lunch">Lunch</label><br>
+                
+                <input type="checkbox" id="meal_time" name="meal_time" value="dinner">
+                <label for="dinner">Dinner</label><br>
+                <br>
+        
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="add-food-upload">
+            <b>Upload JSON</b>
+            <form action="http://127.0.0.1:9000/meal_manager/upload_json" method="POST" enctype = "multipart/form-data" class="form-zero-margin add-food-upload-center">
+                <input type="file" id="recipes_json" name="file">
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+    </div>
+</div>
+    
 {% endblock %}

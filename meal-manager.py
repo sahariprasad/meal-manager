@@ -43,7 +43,7 @@ class Ingredient:
 
 
 def get_all_ingredients():
-    filter = {}
+    filter = {"user": session["email"]}
     projection = {"mandatory_ingredients":1}
     all_mandatory_ingredients = list(food_collection.find(filter = filter, projection = projection))
     flat_list = list(set([element for innerList in [item["mandatory_ingredients"] for item in all_mandatory_ingredients] for element in innerList]))
@@ -116,7 +116,8 @@ def login():
             
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
-                return render_template("meal_manager.html", email=session["email"])
+                # return render_template("meal_manager.html", email=session["email"])
+                return render_template("find_food.html", email=session["email"])
             else:
                 if "email" in session:
                     return redirect(url_for("logged_in"))

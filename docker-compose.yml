@@ -22,7 +22,7 @@ services:
       meal_manager_net:
         ipv4_address: 172.20.0.3
     ports:
-      - 5000:1234
+      - 9000:1234
       
 networks:
   meal_manager_net:

@@ -3,7 +3,7 @@
 
 
 .custom-font {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 @keyframes login-bg-fadein {
@@ -15,10 +15,19 @@
     }
   }
 
+  @keyframes find-food-table-fadein {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
+
 .login-bg {
     height: 100%;
     width: 100%;
-    background-image: url("../images/image1.jpg");
+    background-image: url("../images/image3.jpg");
     margin: 0;
     position: absolute;
     top: 50%;
@@ -86,7 +95,7 @@
 }
 
 .find-food-container {
-    margin-top: 48px;
+    margin-top: 60px;
     float: left;
     display: flex;
     flex-direction: row;
@@ -103,6 +112,7 @@
     left: 50%;
     transform: translate(-50%, 0%);
     z-index: 999;
+    margin-top: 12px;
 }
 
 .find-food-table {
@@ -112,37 +122,47 @@
     align-items: center;
     /* margin-top: 48px; */
     position: relative;
+    animation: 0.25s ease-in 0s 1 find-food-table-fadein;
     /* left: 50%; */
     /* transform: translate(-50%, 0%); */
 }
 
 .find-food-alert {
     width: 75%;
-    min-width: 400px;
+    /* min-width: 400px; */
     justify-content: center;
     margin-top: 48px;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0%);
     text-align: center;
     font-weight: bold;
+    color: white;
+    background-color: rgba(219, 24, 24, 0.541);
+    backdrop-filter: blur(10px);
+    width: 300px;
+    padding: 16px;
+    margin-bottom: 0px;
+    border-radius: 8px;
 }
 
 .find-food-card {
     width: 280px;
-    height: 200px;
+    height: 180px;
     margin: 12px;
-    background-color: rgb(227, 241, 216);
+    background-color: #ffffffaa;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    backdrop-filter: blur(10px);
+    transition: 200ms;
+}
+
+.find-food-card:hover {
+    backdrop-filter: none;
+    background-color: #ffffff;
 }
 
 .find-food-card-title {
     font-size: larger;
     font-weight: bold;
-    /* height: 50px; */
-    padding-left: 12px;
-    padding-top: 12px;
+    padding: 12px 12px 0px 12px;
     margin-bottom: 0px;
     white-space: nowrap;
     overflow: hidden;
@@ -150,17 +170,76 @@
 }
 
 .find-food-card-ingredients {
-    padding-left: 12px;
-    padding-right: 12px;
     margin-bottom: 0px;
-    padding-top: 12px;
+    padding: 12px 12px 0px 12px;
+    font-size: smaller;
 }
 
 .find-food-card-mealtime {
+    font-size: medium;
     padding-left: 12px;
     padding-right: 12px;
     margin-bottom: 0px;
-    padding-top: 12px;
-    color: cadetblue;
+    color: rgb(0, 0, 0);
 }
 
+/* Add food page */
+.add-food-container-bg {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    background-size: cover;
+}
+
+.add-food-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.add-food-manually {
+    background: rgba(59, 58, 58, 0.7);
+    border-radius: 8px;
+    width: 50%;
+    margin: 12px;
+    padding: 12px;
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.add-food-upload {
+    background: rgba(59, 58, 58, 0.7);
+    border-radius: 8px;
+    width: 50%;
+    margin: 12px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    color: white;
+    
+}
+
+.add-food-upload-center {
+    max-width: 500px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Custom Bootstap */
+.navbar-expand-lg .navbar-collapse {
+    flex-direction: row-reverse;
+}
+
+.navbar-light {
+    backdrop-filter: blur(10px);
+    background-color: #ffffffaa;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
