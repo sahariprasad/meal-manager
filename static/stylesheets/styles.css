@@ -3,10 +3,19 @@
 
 
 .custom-font {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 @keyframes login-bg-fadein {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
+
+  @keyframes find-food-table-fadein {
     0% {
       opacity: 0%;
     }
@@ -86,7 +95,7 @@
 }
 
 .find-food-container {
-    margin-top: 48px;
+    margin-top: 60px;
     float: left;
     display: flex;
     flex-direction: row;
@@ -103,6 +112,7 @@
     left: 50%;
     transform: translate(-50%, 0%);
     z-index: 999;
+    margin-top: 12px;
 }
 
 .find-food-table {
@@ -112,6 +122,7 @@
     align-items: center;
     /* margin-top: 48px; */
     position: relative;
+    animation: 0.25s ease-in 0s 1 find-food-table-fadein;
     /* left: 50%; */
     /* transform: translate(-50%, 0%); */
 }
@@ -133,10 +144,12 @@
     height: 200px;
     margin: 12px;
     /* background-color: rgba(247, 236, 146, 0.685); */
-    background-color: #ffffff85;
+    background-color: #ffffffaa;
+    /* background-color: rgba(59, 58, 58, 0.7); */
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
     backdrop-filter: blur(10px);
+    
 }
 
 .find-food-card-title {
@@ -159,27 +172,13 @@
 }
 
 .find-food-card-mealtime {
-    font-size: small;
+    font-size: medium;
     padding-left: 12px;
     padding-right: 12px;
     margin-bottom: 0px;
     /* padding-top: 12px; */
     color: rgb(0, 0, 0);
 }
-
-/* .find-food-background {
-    height: 100%;
-    width: 100%;
-    background-image: url("../images/image1.jpg");
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-} */
 
 /* Add food page */
 .add-food-container-bg {
