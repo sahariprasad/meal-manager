@@ -116,7 +116,8 @@ def login():
             
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
-                return render_template("meal_manager.html", email=session["email"])
+                # return render_template("meal_manager.html", email=session["email"])
+                return render_template("find_food.html", email=session["email"])
             else:
                 if "email" in session:
                     return redirect(url_for("logged_in"))
