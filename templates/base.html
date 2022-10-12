@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}">
 </head>
 <body class="custom-font">
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
         <a class="navbar-brand" href="#">Meal Manager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">Register<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/login">Login</a>
+            <!-- <a class="nav-item nav-link active" href="/">Register<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/login">Login</a> -->
+            <a class="nav-item nav-link" href="/meal_manager/add_recipe">Add Recipe</a>
+            <a class="nav-item nav-link" href="/meal_manager/find_food">Find Food</a>
             <a class="nav-item nav-link" href="/logout">Logout</a>
             </div>
         </div>
