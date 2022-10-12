@@ -2,10 +2,11 @@
 {% block title %}Meal Manager | Find Food{% endblock %}
 {% block nav_title %}Meal Manager | Find Food {% endblock%}
 {% block content %}
-<div>
+<div style="height: 100%; overflow-y: auto;">
     <div style="width: 100%;">
         <div class="find-food-search">
-            <form action="http://127.0.0.1:9000/meal_manager/find_food" method="POST">
+            <!-- <form action="http://127.0.0.1:9000/meal_manager/find_food" method="POST"> -->
+            <form action="" method="POST">
                 <select class="selectpicker" multiple data-live-search="true" multiple data-actions-box="true" name = "available_ingredients" data-width="250px" data-selected-text-format="count > 3">
                     {% for item in all_ingredients %}
                     <option value="{{ item.name }}">{{ item.pretty_name }}</option>
@@ -56,7 +57,7 @@
 
         {% if no_food_alert %}
         <div class="find-food-alert">
-            <p>No possible recipes.</p>
+            <a>No possible recipes.</a>
         </div>
         {% endif %}
     </div>
