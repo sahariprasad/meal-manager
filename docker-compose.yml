@@ -8,7 +8,7 @@ services:
       - discovery.type=single-node
     networks:
       meal_manager_net:
-        ipv4_address: 172.20.0.2
+        ipv4_address: 172.21.0.2
     ports:
       - 3001:27017
   meal_manager:
@@ -20,14 +20,14 @@ services:
       - meal_manager_mongo
     networks:
       meal_manager_net:
-        ipv4_address: 172.20.0.3
+        ipv4_address: 172.21.0.3
     ports:
-      - 9000:1234
+      - 1234:9000
       
 networks:
   meal_manager_net:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.20.0.0/16
-          gateway: 172.20.0.1
+        - subnet: 172.21.0.0/16
+          gateway: 172.21.0.1
