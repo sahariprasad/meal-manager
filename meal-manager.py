@@ -151,7 +151,7 @@ def add_recipe():
             [item.strip() for item in request.form.getlist("meal_time")]
         )
         food_collection.insert_one(dict(new_recipe.get_document(), user=session["email"]))
-        return render_template("upload_success.html")
+        return render_template("find_food.html", user=session["email"])
     return render_template("add_recipe.html")
 
 
@@ -195,7 +195,7 @@ def upload_json():
         recipes_list = json.load(file_content)
         recipes_list_updated = [dict(recipe, user=session["email"]) for recipe in recipes_list]
         food_collection.insert_many(recipes_list_updated, ordered=False)
-        return render_template("upload_success.html")
+        return render_template("find_food.html", user=session["email"])
     return render_template("upload_json.html")
 
 
