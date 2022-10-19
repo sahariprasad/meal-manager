@@ -85,7 +85,7 @@ def index():
             new_email = user_data['email']
 
             session["email"] = new_email
-            return render_template("meal_manager.html", email=session["email"])
+            return render_template("add_recipe.html", email=session["email"])
             return 
     return render_template('index.html')
 
