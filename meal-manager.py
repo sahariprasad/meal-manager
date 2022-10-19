@@ -57,7 +57,8 @@ app.secret_key = "testing"
 def index():
     message = ''
     if "email" in session:
-        return render_template("meal_manager.html", email=session["email"])
+        # return render_template("find_food.html", email=session["email"])
+        return redirect(url_for("find_food", user=session["email"]))
     if request.method == "POST":
         user = request.form.get("fullname")
         email = request.form.get("email")
@@ -85,7 +86,7 @@ def index():
             new_email = user_data['email']
 
             session["email"] = new_email
-            return render_template("meal_manager.html", email=session["email"])
+            return render_template("add_recipe.html", email=session["email"])
             return 
     return render_template('index.html')
 
@@ -117,7 +118,8 @@ def login():
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
                 # return render_template("meal_manager.html", email=session["email"])
-                return render_template("find_food.html", email=session["email"])
+                # return render_template("find_food.html", email=session["email"])
+                return redirect(url_for("find_food", user=session["email"]))
             else:
                 if "email" in session:
                     return redirect(url_for("logged_in"))
@@ -133,7 +135,8 @@ def login():
 def logout():
     if "email" in session:
         session.pop("email", None)
-        return render_template("login.html")
+        # return render_template("login.html")
+        return redirect(url_for("login"))
     else:
         return render_template('index.html')
 
@@ -150,8 +153,9 @@ def add_recipe():
             [item.strip() for item in request.form["optional_ingredients"].lower().split(',')],
             [item.strip() for item in request.form.getlist("meal_time")]
         )
-        food_collection.insert_one(new_recipe.get_document())
-        return render_template("upload_success.html")
+        food_collection.insert_one(dict(new_recipe.get_document(), user=session["email"]))
+        # return render_template("find_food.html", user=session["email"])
+        return redirect(url_for("find_food", user=session["email"]))
     return render_template("add_recipe.html")
 
 
@@ -195,7 +199,8 @@ def upload_json():
         recipes_list = json.load(file_content)
         recipes_list_updated = [dict(recipe, user=session["email"]) for recipe in recipes_list]
         food_collection.insert_many(recipes_list_updated, ordered=False)
-        return render_template("upload_success.html")
+        # return render_template("find_food.html", user=session["email"])
+        return redirect(url_for("find_food", user=session["email"]))
     return render_template("upload_json.html")
 
 

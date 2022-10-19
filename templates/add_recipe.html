@@ -6,7 +6,7 @@
     <div class="add-food-container">
         <div class="add-food-manually">
             <b>Add recipe manually</b>
-            <form action="http://127.0.0.1:9000/meal_manager/add_recipe" method="POST">
+            <form action="http://localhost:1234/meal_manager/add_recipe" method="POST">
                 <label for="pretty_name"><b>Name</b></label><br>
                 <input type="text" id="pretty_name" name="pretty_name"><br><br>
         
@@ -33,7 +33,7 @@
         </div>
         <div class="add-food-upload">
             <b>Upload JSON</b>
-            <form action="http://127.0.0.1:9000/meal_manager/upload_json" method="POST" enctype = "multipart/form-data" class="form-zero-margin add-food-upload-center">
+            <form action="http://localhost:1234/meal_manager/upload_json" method="POST" enctype = "multipart/form-data" class="form-zero-margin add-food-upload-center">
                 <input type="file" id="recipes_json" name="file">
                 <input type="submit" value="Upload">
             </form>
