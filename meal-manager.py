@@ -150,7 +150,7 @@ def add_recipe():
             [item.strip() for item in request.form["optional_ingredients"].lower().split(',')],
             [item.strip() for item in request.form.getlist("meal_time")]
         )
-        food_collection.insert_one(new_recipe.get_document())
+        food_collection.insert_one(dict(new_recipe.get_document(), user=session["email"]))
         return render_template("upload_success.html")
     return render_template("add_recipe.html")
 
