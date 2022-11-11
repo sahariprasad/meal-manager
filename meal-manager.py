@@ -42,8 +42,22 @@ class Ingredient:
         self.pretty_name = name.capitalize()
 
 
-def get_all_ingredients():
-    filter = {"user": session["email"]}
+def authenticate_rest(username, password):
+    user_record = records.find_one({"email": username})
+    user_record_email = user_record['email']
+    user_record_password = user_record['password']
+
+    if bcrypt.checkpw(password.encode('utf-8'), user_record_password):
+        return True
+    else:
+        return False
+
+
+def get_all_ingredients(username=''):
+    if session:
+        username = session["email"]
+
+    filter = {"user": username}
     projection = {"mandatory_ingredients":1}
     all_mandatory_ingredients = list(food_collection.find(filter = filter, projection = projection))
     flat_list = list(set([element for innerList in [item["mandatory_ingredients"] for item in all_mandatory_ingredients] for element in innerList]))
@@ -202,6 +216,33 @@ def upload_json():
         # return render_template("find_food.html", user=session["email"])
         return redirect(url_for("find_food", user=session["email"]))
     return render_template("upload_json.html")
+
+
+@app.route('/meal_manager/rest_find_food', methods = ["GET", "POST"])
+def rest_find_food():
+    username = request.form.get("username")
+    password = request.form.get("password")
+    auth_result = authenticate_rest(username=username, password=password)
+
+    if auth_result:
+        # all_ingredients = get_all_ingredients(username=username)
+        possible_recipes = []
+        rest_filter = {"user": username}
+        all_recipes = list(food_collection.find(filter=rest_filter).sort('pretty_name'))
+        ingredient_list_str = request.form.get("available_ingredients")
+        ingredient_list = ingredient_list_str.lower().split('\r\n')
+        for item in all_recipes:
+            if set(item["mandatory_ingredients"]).issubset(ingredient_list):
+                recipe_object = Recipe(item["pretty_name"], 
+                                        item["mandatory_ingredients"],
+                                        item["optional_ingredients"],
+                                        item["meal_time"])
+                possible_recipes.append(recipe_object)
+        
+        final_recipe_list = []
+        for item in possible_recipes:
+            final_recipe_list.append(item.pretty_name)
+        return str(json.dumps(final_recipe_list))
 
 
 if __name__ == '__main__':
