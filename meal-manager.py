@@ -242,7 +242,7 @@ def rest_find_food():
         final_recipe_list = []
         for item in possible_recipes:
             final_recipe_list.append(item.pretty_name)
-        return str(final_recipe_list)
+        return str(json.dumps(final_recipe_list))
 
 
 if __name__ == '__main__':
