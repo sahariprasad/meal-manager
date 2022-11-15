@@ -222,12 +222,19 @@ def upload_json():
 def rest_find_food():
     username = request.form.get("username")
     password = request.form.get("password")
+    meal_time = request.form.get("meal_time")
+    
     auth_result = authenticate_rest(username=username, password=password)
 
     if auth_result:
         # all_ingredients = get_all_ingredients(username=username)
         possible_recipes = []
-        rest_filter = {"user": username}
+        
+        if meal_time != "":
+            rest_filter = {"user": username, "meal_time": meal_time}
+        else:
+            rest_filter = {"user": username}
+
         all_recipes = list(food_collection.find(filter=rest_filter).sort('pretty_name'))
         ingredient_list_str = request.form.get("available_ingredients")
         ingredient_list = ingredient_list_str.lower().split('\r\n')
