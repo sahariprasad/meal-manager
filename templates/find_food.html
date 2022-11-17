@@ -21,38 +21,18 @@
     <div class="find-food-container">
         
         {% if recipe_list %}
-        <!-- <table class="table table-striped find-food-table">
-            <thead>
-                <tr>
-                    <th scope="col" style="width:25%">Dish</th>
-                    <th scope="col" style="width:25%">Mandatory Ingredients</th>
-                    <th scope="col" style="width:25%">Optional Ingredients</th>
-                    <th scope="col" style="width:25%">Meal time</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for recipe in recipe_list %}
-                <tr>
-                    <td>{{ recipe.pretty_name }}</td>
-                    <td>{{ recipe.mandatory_ingredients_pretty }}</td>
-                    <td>{{ recipe.optional_ingredients_pretty }}</td>
-                    <td>{{ recipe.meal_time_pretty }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table> -->
-        {% for recipe in recipe_list %}
-        <div class="find-food-table">
-            <div class="find-food-card">
-                <div>
-                    <p class="find-food-card-title">{{ recipe.pretty_name }}</p>
-                    <p class="find-food-card-mealtime">{{ recipe.meal_time_pretty }}</p>
-                    <p class="find-food-card-ingredients">{{ recipe.mandatory_ingredients_pretty }}</p>
+            {% for recipe in recipe_list %}
+            <div class="find-food-table">
+                <div class="find-food-card">
+                    <div>
+                        <p class="find-food-card-title">{{ recipe.pretty_name }}</p>
+                        <p class="find-food-card-mealtime">{{ recipe.meal_time_pretty }}</p>
+                        <p class="find-food-card-ingredients">{{ recipe.mandatory_ingredients_pretty }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        {% endfor %}
+            
+            {% endfor %}
         {% endif %}
 
         {% if no_food_alert %}
