@@ -1,10 +1,11 @@
 import pandas as pd
 import openpyxl
 import os
+import json
 
-input_file_path = r'C:\Code repositories\meal-manager'
+input_file_path = r"C:\Users\sahar\OneDrive\Personal\Documents"
 
-recipe_file = pd.ExcelFile(os.path.join(input_file_path, "test.xlsx"))
+recipe_file = pd.ExcelFile(os.path.join(input_file_path, "mealplan.xlsx"))
 recipe_dfs = {sheet_name: recipe_file.parse(sheet_name) for sheet_name in recipe_file.sheet_names}
 first_sheet = list(recipe_dfs.keys())[0]
 
@@ -23,4 +24,7 @@ for item in content_list:
 
 for item in content_list:
     print(item)
-    
+
+file_out = open("test_out.json", "w", encoding='utf-8')
+file_out.write(json.dumps(content_list))
+file_out.close()
