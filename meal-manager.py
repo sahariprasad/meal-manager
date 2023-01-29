@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, flash, url_for, redirect, ses
 from db_man import get_database
 import json
 import bcrypt
+import pandas as pd
+import openpyxl
+import os
 
 db1 = get_database()
 records = db1.register
@@ -209,9 +212,32 @@ def upload_json():
     if request.method == "POST":
         file = request.files["file"]
         file.save(file.filename)
-        file_content = open(file.filename, "r", encoding="utf-8")
-        recipes_list = json.load(file_content)
-        recipes_list_updated = [dict(recipe, user=session["email"]) for recipe in recipes_list]
+        # file_content = open(file.filename, "r", encoding="utf-8")
+        # recipes_list = json.load(file_content)
+        recipe_file = pd.ExcelFile(file.filename)
+        recipe_dfs = {sheet_name: recipe_file.parse(sheet_name) for sheet_name in recipe_file.sheet_names}
+        first_sheet = list(recipe_dfs.keys())[0]
+
+        def clean_ingredient_list(some_string):
+            ingredient_list = some_string.split(',')
+            ingredient_list = [item.strip().lower() for item in ingredient_list]
+            return ingredient_list
+
+        recipe_dfs[first_sheet] = recipe_dfs[first_sheet].fillna('')
+        content_list = recipe_dfs[first_sheet].to_dict('records')
+
+        for item in content_list:
+            item["mandatory_ingredients"] = clean_ingredient_list(item["mandatory_ingredients"])
+            item["optional_ingredients"] = clean_ingredient_list(item["optional_ingredients"])
+            item["meal_time"] = clean_ingredient_list(item["meal_time"])
+
+        # for item in content_list:
+        #     print(item)
+
+        # file_out = open("test_out.json", "w", encoding='utf-8')
+        # file_out.write(json.dumps(content_list))
+        # file_out.close()
+        recipes_list_updated = [dict(recipe, user=session["email"]) for recipe in content_list]
         food_collection.insert_many(recipes_list_updated, ordered=False)
         # return render_template("find_food.html", user=session["email"])
         return redirect(url_for("find_food", user=session["email"]))
