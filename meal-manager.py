@@ -278,5 +278,32 @@ def rest_find_food():
         return str(json.dumps(final_recipe_list))
 
 
+@app.route('/meal_manager/rest_get_ingredients_to_buy', methods = ["GET", "POST"])
+def rest_get_ingredients():
+    username = request.form.get("username")
+    password = request.form.get("password")
+    recipes = request.form.get("recipes")
+    current_ingredients = request.form.get("current_ingredients")
+    
+    auth_result = authenticate_rest(username=username, password=password)
+    if auth_result:
+        current_ingredient_list = current_ingredients.lower().split('\r\n')
+        recipe_list = recipes.split('\r\n')
+        
+        mandatory_ingredients = []
+        for recipe in recipe_list:
+            rest_filter = {"user": username, "pretty_name": recipe}
+            all_recipes = list(food_collection.find(filter=rest_filter).sort('pretty_name'))
+            for item in all_recipes:
+                mandatory_ingredients.extend(item["mandatory_ingredients"])
+
+        ingredients_to_buy = []
+        for ingredient in mandatory_ingredients:
+            if ingredient.lower() not in current_ingredient_list:
+                ingredients_to_buy.append(ingredient)
+        
+        return ingredients_to_buy
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port = 9000)
